@@ -25,6 +25,8 @@
   justify-content: flex-start;
   flex-direction: row;
   gap: 8px;
+  margin-bottom: 32px;
+  margin-top: 36px;
 }
 
 .input-field {
@@ -41,10 +43,22 @@
   line-height: 150%;
   letter-spacing: 0.04em;
   color: #2e2f42;
+  border: 1px solid #808080;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-field:hover {
+  border: 1px solid #000;
+}
+
+.input-field:focus {
+  border: 1px solid #4e75ff;
 }
 
 .btn-start {
   border-radius: 8px;
+  border: none;
   padding: 8px 16px;
   width: 75px;
   height: 40px;
@@ -56,12 +70,17 @@
   line-height: 150%;
   letter-spacing: 0.04em;
   color: #fff;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   gap: 10px;
+}
+
+.btn-start:hover {
+  background: #6c8cff;
 }
 
 .timer {
@@ -82,7 +101,8 @@
   flex-direction: column;
   gap: 0px;
 
-  width: 76px;
+
+
   height: 72px;
 
   font-family: "Montserrat", sans-serif;
@@ -102,4 +122,5 @@
   font-size: 16px;
   line-height: 150%;
   color: #2e2f42;
+  text-transform: uppercase;
 }
