@@ -113,6 +113,9 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 let userSelectedDate;
 
 const btnStart = document.querySelector('[data-start]');
@@ -131,7 +134,17 @@ flatpickr('#datetime-picker', {
     const selectedDate = selectedDates[0];
 
     if (!selectedDate || selectedDate.getTime() < Date.now()) {
-      window.alert('"Please choose a date in the future"');
+      // window.alert('"Please choose a date in the future"');
+      iziToast.show({
+        icon: 'fa-regular fa-circle-xmark',
+        iconColor: ' rgb(199, 198, 198)',
+        imageWidth: 50,
+        message: 'Please choose a date in the future',
+        messageColor: 'white',
+        backgroundColor: '#ef4040',
+        position: 'topRight',
+        class: 'custom-toast',
+      });
       btnStart.disabled = true;
       return;
     } else {
