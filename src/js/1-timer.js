@@ -113,6 +113,8 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
+let userSelectedDate;
+
 flatpickr('#datetime-picker', {
   enableTime: true,
   time_24hr: true,
@@ -120,5 +122,9 @@ flatpickr('#datetime-picker', {
   minuteIncrement: 1,
   onClose(selectedDates) {
     console.log(selectedDates[0]);
+    userSelectedDate = selectedDates[0];
+    if (userSelectedDate < Date.now()) {
+      window.alert('"Please choose a date in the future"');
+    }
   },
 });
