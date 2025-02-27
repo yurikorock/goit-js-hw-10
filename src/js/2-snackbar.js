@@ -1,60 +1,25 @@
-const form = document.querySelector('.feedback-form');
-const localStorageKey = 'feedback-form-state';
+// Напиши скрипт, який після сабміту форми створює проміс. В середині колбека цього промісу через вказану користувачем кількість мілісекунд проміс має виконуватися (при fulfilled) або відхилятися (при rejected), залежно від обраної опції в радіокнопках. Значенням промісу, яке передається як аргумент у методи resolve/reject, має бути значення затримки в мілісекундах.
 
-const formData = {
-  email: '',
-  message: '',
-};
+// Створений проміс треба опрацювати у відповідних для вдалого/невдалого виконання методах.
 
-document.addEventListener('DOMContentLoaded', () => {
-  const savedData = localStorage.getItem(localStorageKey);
+// Якщо проміс виконується вдало, виводь у консоль наступний рядок, де delay — це значення затримки виклику промісу в мілісекундах.
 
-  if (savedData) {
-    const parsedData = JSON.parse(savedData);
-    formData.email = parsedData.email || '';
-    formData.message = parsedData.message || '';
+const form = document.querySelector('.form');
+const inputDelay = document.querySelector('input[name="delay"]');
 
-    form.elements.email.value = formData.email;
-    form.elements.message.value = formData.message;
-  }
-});
+const btnSubmit = document.querySelector('button[type="submit"]');
 
-form.addEventListener('input', event => {
-  const fieldName = event.target.name;
-  const fieldValue = event.target.value.trim();
-
-  formData[fieldName] = fieldValue;
-  localStorage.setItem(localStorageKey, JSON.stringify(formData));
-});
+let delayValue;
+let stateValue;
 
 form.addEventListener('submit', event => {
+  console.log('Button pushed');
   event.preventDefault();
 
-  if (!formData.email || !formData.message) {
-    alert('Fill please all fields');
-    return;
-  }
+  delayValue = inputDelay.value;
+  console.log('delayValue:', delayValue);
 
-  console.log('Дані форми:', formData);
-
-  localStorage.removeItem(localStorageKey);
-  form.reset();
-
-  formData.email = '';
-  formData.message = '';
+  const inputRadio = document.querySelector('input[name="state"]:checked');
+  stateValue = inputRadio.value;
+  console.log('stateValue:', stateValue);
 });
-
-// form.addEventListener('submit', evt => {
-//   evt.preventDefault();
-//   console.log(evt.target.elements.email.value);
-//   console.log(evt.target.elements.message.value);
-//   localStorage.removeItem(localStorageKey);
-//   form.reset();
-// });
-
-// form.addEventListener('submit', onFormSubmit);
-
-// function onFormSubmit(event) {
-//   event.preventDefault();
-//   console.log(event.target.elements);
-// }
