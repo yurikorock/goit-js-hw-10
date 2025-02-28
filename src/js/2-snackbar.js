@@ -9,17 +9,53 @@ const inputDelay = document.querySelector('input[name="delay"]');
 
 const btnSubmit = document.querySelector('button[type="submit"]');
 
-let delayValue;
-let stateValue;
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 form.addEventListener('submit', event => {
-  console.log('Button pushed');
+  // console.log('Button pushed');
   event.preventDefault();
 
-  delayValue = inputDelay.value;
-  console.log('delayValue:', delayValue);
+  let delay = Number(inputDelay.value);
+  // console.log('delayValue:', delay);
 
   const inputRadio = document.querySelector('input[name="state"]:checked');
-  stateValue = inputRadio.value;
-  console.log('stateValue:', stateValue);
+  let state = inputRadio.value;
+  // console.log('stateValue:', state);
+
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (state === 'fulfilled') {
+        resolve(`✅ Fulfilled promise in ${delay}ms`);
+      } else {
+        reject(`❌ Rejected promise in ${delay}ms`);
+      }
+    }, delay);
+  });
+
+  // console.log(promise); // Об'єкт промісу
+
+  promise
+    .then(value => {
+      // console.log(value); // `✅ Fulfilled promise in ${delay}ms`
+      iziToast.show({
+        imageWidth: 50,
+        message: `✅ Fulfilled promise in ${delay}ms`,
+        messageColor: 'white',
+        backgroundColor: '#59a10d',
+        position: 'topRight',
+        class: 'custom-toast',
+      });
+    })
+    .catch(error => {
+      // console.log(error); // `❌ Rejected promise in ${delay}ms`
+      iziToast.show({
+        imageWidth: 50,
+        message: `❌ Rejected promise in ${delay}ms`,
+        messageColor: 'white',
+        backgroundColor: '#ef4040',
+        position: 'topRight',
+        class: 'custom-toast',
+      });
+    });
 });
