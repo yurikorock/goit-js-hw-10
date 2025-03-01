@@ -105,3 +105,114 @@
 
 
 }
+
+/* Region block Styles Snackbar*/
+.form {
+  width: 370px;
+  margin: 0 auto;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 36px;
+  margin-bottom: 8px;
+}
+
+.input-delay {
+  width: 360px;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-delay:hover {
+  border: 1px solid #000;
+
+}
+
+.input-delay:focus {
+  border: 1px solid #4e75ff;
+
+}
+
+.form-fieldset {
+  width: 358px;
+  height: 78px;
+  margin: 0px 0px 24px 0px;
+  padding: 0px;
+
+  border-radius: 4px;
+  stroke-width: 1px;
+  stroke: #808080;
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  border: 1px solid #808080;
+
+
+}
+
+.form-fieldset:hover {
+  border: 1px solid #000;
+
+}
+
+.form-fieldset:focus {
+  border: 1px solid #000;
+
+}
+
+.form-legend {
+  margin-left: 0;
+}
+
+.form-label-input {
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+.input-radio {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-submit {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 360px;
+  height: 40px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
+
+  border-color: transparent;
+  background: #4e75ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-submit:hover {
+
+  background: #6c8cff;
+}
